@@ -35,7 +35,7 @@ class DomainParking extends Site{
 	public function create_admin_page(){
 		
 		$options = array();
-		global $wpdb;
+		global $wpdb, $table_prefix;
 		
 		if(isset($_POST['submit'])){
 			$result = $this->park_domain();
@@ -50,7 +50,7 @@ class DomainParking extends Site{
 		$blogs = array();
 		if($multisite){
 			$blogs = $wpdb->get_results("SELECT b.blog_id, b.domain 
-										 FROM wp_blogs b 
+										 FROM ".$table_prefix."blogs b 
 										 WHERE b.domain 
 										 NOT IN (SELECT s.domain FROM wp_site s)");
 		}

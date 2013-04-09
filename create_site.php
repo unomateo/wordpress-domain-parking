@@ -4,8 +4,6 @@ require_once '../../../wp-config.php';
 require_once 'domain-parking.php';
 require_once 'site.class.php';
 
-global $wpdb;
-
 if(isset($_POST['submit'])){
 	$site = new Site();
 	
