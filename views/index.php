@@ -5,7 +5,7 @@
 		<a target='_blank' href='http://codex.wordpress.org/Create_A_Network'>direction to configure a network</a>.<br>
 		<b>Please note</b>, Do not
 		configure a network if you have already created content on this site. Only configure networks on fresh installs</div>
-	<?php endif; ?>
+	<?php else: ?>
 	<form method='post' action='<?php echo DOMAINPARKING_URL ?>create_site.php'>
 		<table class="form-table">
 			<tbody>
@@ -27,4 +27,5 @@
 		</table>
 		<input type="submit" name="submit" id="doaction2" class="button action" value="Apply">
 	</form>
+	<?php endif;?>
 </div>
