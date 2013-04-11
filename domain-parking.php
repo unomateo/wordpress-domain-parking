@@ -18,14 +18,24 @@ require_once('site.class.php');
 define( 'DOMAINPARKING_PATH', plugin_dir_path(__FILE__) );
 define( 'DOMAINPARKING_URL', plugin_dir_url(__FILE__) );
 
+
+
+
 class DomainParking extends Site{
 	private $view;
 	public function __construct(){
 		$this->view = new View(); 
 		if(is_admin()){
 			add_action('admin_menu', array($this, 'add_plugin_page'));
-			//add_action('admin_init', array($this, 'page_init'));
+			add_filter('wpmu_users_columns', array($this, 'edit_user_column'));
 		}
+		
+	}
+	
+	function edit_user_column($users_columns){
+		
+		unset($users_columns['blogs']);
+		return $users_columns;
 	}
 	
 	public function add_plugin_page(){
